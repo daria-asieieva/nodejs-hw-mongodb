@@ -1,0 +1,29 @@
+{
+  "name": "nodejs-hw-mongodb",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+     "start": "node src/index.js",
+  "dev": "nodemon src/index.js",
+  "lint": "eslint **/*.js"
+  },
+  "keywords": [],
+  "author": "Daria Asieieva <dariaasieieva@gmail.com>",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "mongoose": "^8.11.0",
+    "pino": "^9.6.0",
+    "pino-http": "^10.4.0"
+  },
+  "devDependencies": {
+    "eslint": "^9.21.0",
+    "nodemon": "^3.1.9",
+    "prettier": "^3.5.2"
+  }
+}
