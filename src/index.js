@@ -6,4 +6,4 @@ export const boostrap = async () => {
   setUpServer();
 };
 
-boostrap();
+boostrap(); 
