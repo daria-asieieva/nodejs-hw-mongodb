@@ -1,16 +1,9 @@
-import * as dotenv from 'dotenv';
 import { initMongoConnection } from './db/initMongoConnection.js';
-import { setupServer } from './server.js';
-dotenv.config();
+import setUpServer from './server.js';
 
-const startApp = async () => {
-  try {
-    await initMongoConnection();
-    setupServer();
-  } catch (error) {
-    console.error('Failed to start the application:', error.message);
-    process.exit(1);
-  }
+export const boostrap = async () => {
+  await initMongoConnection();
+  setUpServer();
 };
 
-startApp();
+boostrap();

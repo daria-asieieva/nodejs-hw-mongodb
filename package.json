@@ -5,9 +5,9 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-     "start": "node src/index.js",
-  "dev": "nodemon src/index.js",
-  "lint": "eslint **/*.js"
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js",
+    "lint": "eslint **/*.js"
   },
   "keywords": [],
   "author": "Daria Asieieva <dariaasieieva@gmail.com>",
@@ -19,7 +19,8 @@
     "express": "^4.21.2",
     "mongoose": "^8.11.0",
     "pino": "^9.6.0",
-    "pino-http": "^10.4.0"
+    "pino-http": "^10.4.0",
+    "pino-pretty": "^13.0.0"
   },
   "devDependencies": {
     "eslint": "^9.21.0",

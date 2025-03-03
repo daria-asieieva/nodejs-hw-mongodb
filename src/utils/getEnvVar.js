@@ -1,7 +1,12 @@
-export const getEnvVar = (key) => {
-  const value = process.env[key];
-  if (!value) {
-    throw new Error(`Змінна оточення ${key} не задана`);
-  }
-  return value;
+import dotenv from 'dotenv';
+
+dotenv.config();
+
+export const getEnvVar = (name, defaultName) => {
+  const value = process.env[name];
+
+  if (value) return value;
+
+  if (defaultName) return defaultName;
+  throw new Error(`Missing: process.env['${name}'].`);
 };
