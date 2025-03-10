@@ -1,4 +1,3 @@
-// src/controllers/contacts.js
 import createError from 'http-errors';
 import { 
   getAllContacts as getAllContactsService, 
