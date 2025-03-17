@@ -8,18 +8,16 @@ import {
 } from '../services/contacts.js';
 
 export const getAllContacts = async (req, res) => {
-  const contacts = await getAllContactsService();
+  const paginatedContacts = await getAllContactsService(req.query);
   res.status(200).json({
     status: 200,
     message: 'Successfully found contacts',
-    data: contacts,
+    data: paginatedContacts,
   });
 };
 
 export const getContactById = async (req, res) => {
   const { contactId } = req.params;
-  console.log('Received contactId:', contactId);
-
   const contact = await getContactByIdService(contactId);
 
   if (!contact) {
