@@ -1,5 +1,7 @@
 import { ContactsCollections } from '../db/models/Contact.js';
 
+const VALID_CONTACT_TYPES = ['work', 'home', 'personal'];
+
 export const getAllContacts = async (query = {}) => {
   const { 
     page = 1, 
@@ -12,17 +14,18 @@ export const getAllContacts = async (query = {}) => {
   const skip = (page - 1) * perPage;
   const limit = parseInt(perPage);
   
- 
+  
   const filter = {};
-  if (type) {
+  
+  if (type && VALID_CONTACT_TYPES.includes(type)) {
     filter.contactType = type;
   }
   
-
+  
   const sort = {};
   sort[sortBy] = sortOrder === 'desc' ? -1 : 1;
-
   
+
   const contacts = await ContactsCollections.find(filter)
     .sort(sort)
     .skip(skip)
