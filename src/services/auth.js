@@ -1,11 +1,13 @@
-import jwt from 'jsonwebtoken';
 import bcrypt from 'bcrypt';
 import createError from 'http-errors';
 import { UserCollection } from '../db/models/User.js';
 import { SessionCollection } from '../db/models/Session.js';
-import { getEnvVar } from '../utils/getEnvVar.js';
+import crypto from 'crypto';
 
-const JWT_SECRET = getEnvVar('JWT_SECRET');
+
+const generateToken = () => {
+  return crypto.randomBytes(32).toString('hex');
+};
 
 export const register = async (userData) => {
   const { email } = userData;
@@ -36,14 +38,12 @@ export const login = async (loginData) => {
     throw createError(401, 'Email or password is wrong');
   }
   
-  
+
   await SessionCollection.deleteMany({ userId: user._id.toString() });
   
-  
-  const payload = { id: user._id };
-  
-  const accessToken = jwt.sign(payload, JWT_SECRET, { expiresIn: '15m' });
-  const refreshToken = jwt.sign(payload, JWT_SECRET, { expiresIn: '30d' });
+
+  const accessToken = generateToken();
+  const refreshToken = generateToken();
   
   
   const now = new Date();
@@ -67,14 +67,6 @@ export const refresh = async (refreshToken) => {
     throw createError(401, 'No refresh token provided');
   }
   
-  let payload;
-  try {
-    payload = jwt.verify(refreshToken, JWT_SECRET);
-  } catch (error) {
-      console.error(error);
-    throw createError(401, 'Invalid refresh token');
-  }
-  
   const session = await SessionCollection.findOne({ refreshToken });
   if (!session) {
     throw createError(401, 'Invalid refresh token');
@@ -85,21 +77,19 @@ export const refresh = async (refreshToken) => {
     throw createError(401, 'Refresh token expired');
   }
   
-  
+
   await SessionCollection.deleteOne({ _id: session._id });
   
+  const newAccessToken = generateToken();
+  const newRefreshToken = generateToken();
   
-  const newAccessToken = jwt.sign({ id: payload.id }, JWT_SECRET, { expiresIn: '15m' });
-  const newRefreshToken = jwt.sign({ id: payload.id }, JWT_SECRET, { expiresIn: '30d' });
   
- 
   const now = new Date();
   const accessTokenValidUntil = new Date(now.getTime() + 15 * 60 * 1000); 
   const refreshTokenValidUntil = new Date(now.getTime() + 30 * 24 * 60 * 60 * 1000); 
   
- 
   await SessionCollection.create({
-    userId: payload.id,
+    userId: session.userId,
     accessToken: newAccessToken,
     refreshToken: newRefreshToken,
     accessTokenValidUntil,
