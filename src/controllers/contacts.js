@@ -8,7 +8,7 @@ import {
 } from '../services/contacts.js';
 
 export const getAllContacts = async (req, res) => {
-  const paginatedContacts = await getAllContactsService(req.query);
+  const paginatedContacts = await getAllContactsService(req.query, req.user._id);
   res.status(200).json({
     status: 200,
     message: 'Successfully found contacts',
@@ -18,7 +18,7 @@ export const getAllContacts = async (req, res) => {
 
 export const getContactById = async (req, res) => {
   const { contactId } = req.params;
-  const contact = await getContactByIdService(contactId);
+  const contact = await getContactByIdService(contactId, req.user._id);
 
   if (!contact) {
     throw createError(404, "Contact not found");
@@ -32,7 +32,7 @@ export const getContactById = async (req, res) => {
 };
 
 export const createContact = async (req, res) => {
-  const newContact = await createContactService(req.body);
+  const newContact = await createContactService(req.body, req.user._id);
   
   res.status(201).json({
     status: 201,
@@ -43,7 +43,7 @@ export const createContact = async (req, res) => {
 
 export const updateContact = async (req, res) => {
   const { contactId } = req.params;
-  const updatedContact = await updateContactService(contactId, req.body);
+  const updatedContact = await updateContactService(contactId, req.body, req.user._id);
   
   if (!updatedContact) {
     throw createError(404, "Contact not found");
@@ -58,7 +58,7 @@ export const updateContact = async (req, res) => {
 
 export const deleteContact = async (req, res) => {
   const { contactId } = req.params;
-  const deletedContact = await deleteContactService(contactId);
+  const deletedContact = await deleteContactService(contactId, req.user._id);
   
   if (!deletedContact) {
     throw createError(404, "Contact not found");

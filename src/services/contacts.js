@@ -2,7 +2,7 @@ import { ContactsCollections } from '../db/models/Contact.js';
 
 const VALID_CONTACT_TYPES = ['work', 'home', 'personal'];
 
-export const getAllContacts = async (query = {}) => {
+export const getAllContacts = async (query = {}, userId) => {
   const { 
     page = 1, 
     perPage = 10,
@@ -15,7 +15,7 @@ export const getAllContacts = async (query = {}) => {
   const limit = parseInt(perPage);
   
   
-  const filter = {};
+  const filter = { userId };
   
   if (type && VALID_CONTACT_TYPES.includes(type)) {
     filter.contactType = type;
@@ -45,22 +45,22 @@ export const getAllContacts = async (query = {}) => {
   };
 };
 
-export const getContactById = async (contactId) => {
-  return await ContactsCollections.findById(contactId);
+export const getContactById = async (contactId, userId) => {
+  return await ContactsCollections.findOne({ _id: contactId, userId });
 };
 
-export const createContact = async (contactData) => {
-  return await ContactsCollections.create(contactData);
+export const createContact = async (contactData, userId) => {
+  return await ContactsCollections.create({ ...contactData, userId });
 };
 
-export const updateContact = async (contactId, contactData) => {
-  return await ContactsCollections.findByIdAndUpdate(
-    contactId,
+export const updateContact = async (contactId, contactData, userId) => {
+  return await ContactsCollections.findOneAndUpdate(
+    { _id: contactId, userId },
     contactData,
     { new: true }
   );
 };
 
-export const deleteContact = async (contactId) => {
-  return await ContactsCollections.findByIdAndDelete(contactId);
+export const deleteContact = async (contactId, userId) => {
+  return await ContactsCollections.findOneAndDelete({ _id: contactId, userId });
 };

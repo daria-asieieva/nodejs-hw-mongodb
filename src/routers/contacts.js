@@ -9,8 +9,12 @@ import {
 } from '../controllers/contacts.js';
 import { validateBody, isValidId } from '../middlewares/validation.js';
 import { createContactSchema, updateContactSchema } from '../schemas/contacts.js';
+import { authenticate } from '../middlewares/authenticate.js';
 
 const router = express.Router();
+
+
+router.use(authenticate);
 
 router.get('/', ctrlWrapper(getAllContacts));
 router.get('/:contactId', isValidId, ctrlWrapper(getContactById));
