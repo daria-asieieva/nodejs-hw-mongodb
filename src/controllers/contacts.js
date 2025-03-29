@@ -32,7 +32,10 @@ export const getContactById = async (req, res) => {
 };
 
 export const createContact = async (req, res) => {
-  const newContact = await createContactService(req.body, req.user._id);
+  const contactData = req.body;
+  const photo = req.file || null;
+  
+  const newContact = await createContactService(contactData, photo, req.user._id);
   
   res.status(201).json({
     status: 201,
@@ -43,7 +46,10 @@ export const createContact = async (req, res) => {
 
 export const updateContact = async (req, res) => {
   const { contactId } = req.params;
-  const updatedContact = await updateContactService(contactId, req.body, req.user._id);
+  const contactData = req.body;
+  const photo = req.file || null;
+  
+  const updatedContact = await updateContactService(contactId, contactData, photo, req.user._id);
   
   if (!updatedContact) {
     throw createError(404, "Contact not found");
