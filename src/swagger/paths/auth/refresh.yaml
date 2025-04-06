@@ -1,0 +1,25 @@
+post:
+  security: []
+  tags:
+    - Authentication
+  summary: Refresh access token
+  operationId: refreshToken
+  description: Get a new access token using a refresh token
+  responses:
+    '200':
+      description: Token successfully refreshed
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/AuthResponse.yaml'
+      headers:
+        Set-Cookie:
+          schema:
+            type: string
+            example: refreshToken=new123; HttpOnly; Max-Age=2592000; SameSite=None; Secure
+    '401':
+      description: Invalid or expired refresh token
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/Error.yaml'

@@ -1,0 +1,55 @@
+openapi: 3.1.0
+info:
+  version: 1.0.0
+  title: Contacts Management API
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  description: |
+    This API allows users to manage their contacts. It provides functionality to create, read, update and delete contacts.
+    Contacts can be categorized as work, home, or personal. Users need to authenticate to access their contacts.
+tags:
+  - name: Contacts
+    description: Operations related to contacts management
+  - name: Authentication
+    description: Operations related to user authentication
+servers:
+  - url: http://localhost:3000
+  - url: https://nodejs-hw-mongodb-ae8d.onrender.com
+paths:
+  /contacts/{contactId}:
+    $ref: '../src/swagger/paths/contacts/{contactId}/index.yaml'
+  /contacts:
+    $ref: '../src/swagger/paths/contacts/index.yaml'
+  /auth/register:
+    $ref: '../src/swagger/paths/auth/register.yaml'
+  /auth/login:
+    $ref: '../src/swagger/paths/auth/login.yaml'
+  /auth/logout:
+    $ref: '../src/swagger/paths/auth/logout.yaml'
+  /auth/refresh:
+    $ref: '../src/swagger/paths/auth/refresh.yaml'
+  /auth/send-reset-email:
+    $ref: '../src/swagger/paths/auth/send-reset-email.yaml'
+  /auth/reset-pwd:
+    $ref: '../src/swagger/paths/auth/reset-pwd.yaml'
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+  schemas:
+    Contact:
+      $ref: '../src/swagger/components/schemas/Contact.yaml'
+    ContactResponse:
+      $ref: '../src/swagger/components/schemas/ContactResponse.yaml'
+    ContactsListResponse:
+      $ref: '../src/swagger/components/schemas/ContactsListResponse.yaml'
+    Error:
+      $ref: '../src/swagger/components/schemas/Error.yaml'
+    User:
+      $ref: '../src/swagger/components/schemas/User.yaml'
+    UserResponse:
+      $ref: '../src/swagger/components/schemas/UserResponse.yaml'
+    AuthResponse:
+      $ref: '../src/swagger/components/schemas/AuthResponse.yaml'

@@ -1,0 +1,43 @@
+post:
+  security: []
+  tags:
+    - Authentication
+  summary: Login to the application
+  operationId: loginUser
+  description: Authenticates a user and returns an access token
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            email:
+              type: string
+              format: email
+              example: 'john.doe@example.com'
+            password:
+              type: string
+              format: password
+              example: 'password123'
+          required:
+            - email
+            - password
+  responses:
+    '200':
+      description: User successfully logged in
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/AuthResponse.yaml'
+      headers:
+        Set-Cookie:
+          schema:
+            type: string
+            example: refreshToken=abc123; HttpOnly; Max-Age=2592000; SameSite=None; Secure
+    '401':
+      description: Invalid credentials
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/Error.yaml'

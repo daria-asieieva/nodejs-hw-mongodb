@@ -1,0 +1,32 @@
+post:
+  security: []
+  tags:
+    - Authentication
+  summary: Register a new user
+  operationId: registerUser
+  description: Creates a new user account
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: '../../components/schemas/User.yaml'
+  responses:
+    '201':
+      description: User successfully registered
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/UserResponse.yaml'
+    '400':
+      description: Bad request
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/Error.yaml'
+    '409':
+      description: Email already in use
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/Error.yaml'

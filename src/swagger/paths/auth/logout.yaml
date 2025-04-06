@@ -1,0 +1,16 @@
+post:
+  security: []
+  tags:
+    - Authentication
+  summary: Logout from the application
+  operationId: logoutUser
+  description: Invalidates the current session
+  responses:
+    '204':
+      description: Successfully logged out
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/Error.yaml'

@@ -1,0 +1,60 @@
+tags:
+  - Contacts
+summary: Update a contact
+operationId: updateContact
+description: Updates an existing contact by ID
+security:
+  - bearerAuth: []
+requestBody:
+  required: true
+  content:
+    multipart/form-data:
+      schema:
+        type: object
+        properties:
+          name:
+            type: string
+            example: 'John Smith'
+          phoneNumber:
+            type: string
+            example: '+380991234567'
+          email:
+            type: string
+            format: email
+            example: 'john.smith@example.com'
+          isFavourite:
+            type: boolean
+            example: true
+          contactType:
+            type: string
+            enum: [work, home, personal]
+            example: 'personal'
+          photo:
+            type: string
+            format: binary
+            description: Contact's photo file
+responses:
+  '200':
+    description: Contact successfully updated
+    content:
+      application/json:
+        schema:
+          $ref: '../../../components/schemas/ContactResponse.yaml'
+  '404':
+    description: Contact not found
+    content:
+      application/json:
+        schema:
+          $ref: '../../../components/schemas/Error.yaml'
+  '400':
+    description: Bad request
+    content:
+      application/json:
+        schema:
+          $ref: '../../../components/schemas/Error.yaml'
+  '401':
+    description: Unauthorized
+    content:
+      application/json:
+        schema:
+          $ref: '../../../components/schemas/Error.yaml'
