@@ -20,7 +20,7 @@ const setUpServer = () => {
   try {
     
     const swaggerPath = new URL('../docs/swagger.json', import.meta.url);
-    swaggerDocument = JSON.parse(fs.readFileSync(swaggerPath, 'utf8'));
+    swaggerDocument = JSON.parse(fs.readFileSync(swaggerPath, 'utf-8'));
   } catch (error) {
     console.log(error);
     console.log('Swagger JSON not found. API docs may not be available.');

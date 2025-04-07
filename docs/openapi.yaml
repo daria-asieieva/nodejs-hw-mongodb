@@ -14,7 +14,7 @@ tags:
   - name: Authentication
     description: Operations related to user authentication
 servers:
-  - url: http://localhost:3000
+  - url: http://127.0.0.1:3000
   - url: https://nodejs-hw-mongodb-ae8d.onrender.com
 paths:
   /contacts/{contactId}:
