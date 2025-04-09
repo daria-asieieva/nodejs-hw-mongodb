@@ -13,10 +13,10 @@ responses:
     content:
       application/json:
         schema:
-          $ref: '../../../components/schemas/Error.yaml'
+          $ref: ../../../components/responses/404.yaml
   '401':
     description: Unauthorized
     content:
       application/json:
         schema:
-          $ref: '../../../components/schemas/Error.yaml'
+          $ref: ../../../components/responses/401.yaml

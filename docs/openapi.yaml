@@ -38,18 +38,12 @@ components:
     bearerAuth:
       type: http
       scheme: bearer
-  schemas:
-    Contact:
-      $ref: '../src/swagger/components/schemas/Contact.yaml'
-    ContactResponse:
-      $ref: '../src/swagger/components/schemas/ContactResponse.yaml'
-    ContactsListResponse:
-      $ref: '../src/swagger/components/schemas/ContactsListResponse.yaml'
-    Error:
-      $ref: '../src/swagger/components/schemas/Error.yaml'
-    User:
-      $ref: '../src/swagger/components/schemas/User.yaml'
-    UserResponse:
-      $ref: '../src/swagger/components/schemas/UserResponse.yaml'
-    AuthResponse:
-      $ref: '../src/swagger/components/schemas/AuthResponse.yaml'
+  responses:
+    Unauthorized:
+      $ref: ../src/swagger/components/responses/401.yaml
+    Forbidden:
+      $ref: '../src/swagger/components/responses/403.yaml'
+    BadRequest:
+      $ref: ../src/swagger/components/responses/400.yaml
+    NotFound:
+      $ref: '../src/swagger/components/responses/404.yaml'

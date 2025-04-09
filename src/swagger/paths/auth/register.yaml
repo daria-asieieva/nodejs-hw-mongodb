@@ -17,16 +17,16 @@ post:
       content:
         application/json:
           schema:
-            $ref: '../../components/schemas/UserResponse.yaml'
+            $ref: ../../components/responses/201.yaml
     '400':
       description: Bad request
       content:
         application/json:
           schema:
-            $ref: '../../components/schemas/Error.yaml'
+            $ref: ../../components/responses/400.yaml
     '409':
       description: Email already in use
       content:
         application/json:
           schema:
-            $ref: '../../components/schemas/Error.yaml'
+            $ref: ../../components/responses/409.yaml

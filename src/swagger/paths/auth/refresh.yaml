@@ -11,7 +11,7 @@ post:
       content:
         application/json:
           schema:
-            $ref: '../../components/schemas/AuthResponse.yaml'
+            $ref: ../../components/responses/200.yaml
       headers:
         Set-Cookie:
           schema:
@@ -22,4 +22,4 @@ post:
       content:
         application/json:
           schema:
-            $ref: '../../components/schemas/Error.yaml'
+            $ref: ../../components/responses/401.yaml

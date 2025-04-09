@@ -1,0 +1,14 @@
+type: object
+properties:
+  status:
+    type: integer
+    example: 401
+  message:
+    type: string
+    example: 'Unauthorized'
+  data:
+    type: string
+    example: '"email" is required, "emai" is not allowed'
+required:
+  - status
+  - message

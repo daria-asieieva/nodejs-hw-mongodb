@@ -1,0 +1,9 @@
+description: Conflict - user already exists
+content:
+  application/json:
+    schema:
+      $ref: '../schemas/ErrorResponseSchema.yaml'
+    example:
+      status: 409
+      message: 'Something went wrong'
+      data: 'Email in use'

@@ -40,10 +40,10 @@ post:
       content:
         application/json:
           schema:
-            $ref: '../../components/schemas/Error.yaml'
+            $ref: ../../components/responses/404.yaml
     '500':
       description: Email sending failed
       content:
         application/json:
           schema:
-            $ref: '../../components/schemas/Error.yaml'
+            $ref: ../../components/responses/500.yaml

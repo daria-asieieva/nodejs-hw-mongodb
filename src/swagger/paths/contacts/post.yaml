@@ -46,16 +46,16 @@ responses:
     content:
       application/json:
         schema:
-          $ref: '../../components/schemas/ContactResponse.yaml'
+          $ref: ../../components/responses/201.yaml
   '400':
     description: Bad request
     content:
       application/json:
         schema:
-          $ref: '../../components/schemas/Error.yaml'
+          $ref: ../../components/responses/400.yaml
   '401':
     description: Unauthorized
     content:
       application/json:
         schema:
-          $ref: '../../components/schemas/Error.yaml'
+          $ref: ../../components/responses/401.yaml
