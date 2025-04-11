@@ -40,10 +40,27 @@ post:
       content:
         application/json:
           schema:
-            $ref: ../../components/responses/404.yaml
+            type: object
+            properties:
+              status:
+                type: integer
+                example: 404
+              message:
+                type: string
+                example: 'User not found'
     '500':
       description: Email sending failed
       content:
         application/json:
           schema:
-            $ref: ../../components/responses/500.yaml
+            type: object
+            properties:
+              status:
+                type: integer
+                example: 500
+              message:
+                type: string
+                example: 'Something went wrong'
+              data:
+                type: string
+                example: 'Error details'

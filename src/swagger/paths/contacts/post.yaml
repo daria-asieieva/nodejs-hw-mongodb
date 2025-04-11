@@ -46,16 +46,33 @@ responses:
     content:
       application/json:
         schema:
-          $ref: ../../components/responses/201.yaml
+          $ref: ../../components/schemas/Contact.yaml
   '400':
     description: Bad request
     content:
       application/json:
         schema:
-          $ref: ../../components/responses/400.yaml
+          type: object
+          properties:
+            status:
+              type: integer
+              example: 400
+            message:
+              type: string
+              example: 'Something went wrong'
+            data:
+              type: string
+              example: '"email" is required, "emai" is not allowed'
   '401':
     description: Unauthorized
     content:
       application/json:
         schema:
-          $ref: ../../components/responses/401.yaml
+          type: object
+          properties:
+            status:
+              type: integer
+              example: 401
+            message:
+              type: string
+              example: 'Unauthorized'

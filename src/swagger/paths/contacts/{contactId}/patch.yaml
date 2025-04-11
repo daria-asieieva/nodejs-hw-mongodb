@@ -39,22 +39,57 @@ responses:
     content:
       application/json:
         schema:
-          $ref: ../../../components/responses/200.yaml
-  '404':
-    description: Contact not found
-    content:
-      application/json:
-        schema:
-          $ref: ../../../components/responses/404.yaml
+          type: object
+          properties:
+            status:
+              type: integer
+              example: 200
+            message:
+              type: string
+              example: 'Contact successfully updated.'
+            data:
+              type: object
+              example: {}
   '400':
     description: Bad request
     content:
       application/json:
         schema:
-          $ref: ../../../components/responses/400.yaml
+          type: object
+          properties:
+            status:
+              type: integer
+              example: 400
+            message:
+              type: string
+              example: 'Something went wrong'
+            data:
+              type: string
+              example: '"email" is required, "emai" is not allowed'
   '401':
     description: Unauthorized
     content:
       application/json:
         schema:
-          $ref: ../../../components/responses/401.yaml
+          type: object
+          properties:
+            status:
+              type: integer
+              example: 401
+            message:
+              type: string
+              example: 'Unauthorized'
+
+  '404':
+    description: Contact not found
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            status:
+              type: integer
+              example: 404
+            message:
+              type: string
+              example: 'Contact not found'

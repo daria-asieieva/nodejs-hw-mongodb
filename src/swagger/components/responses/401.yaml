@@ -1,8 +1,0 @@
-description: Unauthorized access
-content:
-  application/json:
-    schema:
-      $ref: '../schemas/ErrorResponseSchema.yaml'
-    example:
-      status: 401
-      message: Not authenticated

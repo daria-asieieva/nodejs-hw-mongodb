@@ -13,4 +13,11 @@ post:
       content:
         application/json:
           schema:
-            $ref: ../../components/responses/401.yaml
+            type: object
+            properties:
+              status:
+                type: integer
+                example: 401
+              message:
+                type: string
+                example: 'Unauthorized'

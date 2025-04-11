@@ -38,12 +38,3 @@ components:
     bearerAuth:
       type: http
       scheme: bearer
-  responses:
-    Unauthorized:
-      $ref: ../src/swagger/components/responses/401.yaml
-    Forbidden:
-      $ref: '../src/swagger/components/responses/403.yaml'
-    BadRequest:
-      $ref: ../src/swagger/components/responses/400.yaml
-    NotFound:
-      $ref: '../src/swagger/components/responses/404.yaml'

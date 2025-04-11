@@ -44,10 +44,24 @@ post:
       content:
         application/json:
           schema:
-            $ref: ../../components/responses/401.yaml
+            type: object
+            properties:
+              status:
+                type: integer
+                example: 401
+              message:
+                type: string
+                example: 'Unauthorized'
     '404':
       description: User not found
       content:
         application/json:
           schema:
-            $ref: ../../components/responses/404.yaml
+            type: object
+            properties:
+              status:
+                type: integer
+                example: 404
+              message:
+                type: string
+                example: 'User not found'

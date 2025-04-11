@@ -2,41 +2,52 @@ type: object
 properties:
   _id:
     type: string
+    description: The unique identifier of the contact
     example: '67f25d39e1935b9687129f29'
   name:
     type: string
+    description: Contact's full name
     example: 'John Doe'
   email:
     type: string
+    format: email
+    description: Contact's email address
     example: 'john.doe@example.com'
   phoneNumber:
     type: string
+    description: Contact's phone number
     example: '+123456789'
   isFavourite:
     type: boolean
+    description: Whether this contact is marked as favorite
     example: false
   contactType:
     type: string
+    enum: ['work', 'home', 'personal']
+    description: Category of this contact
     example: 'work'
   userId:
     type: string
+    description: ID of the user who owns this contact
     example: '67f22a41875fd7d41ec03fd3'
   photo:
     type: string
-    format: binary
-    example: null
+    format: uri
+    description: URL to the contact's photo
+    example: 'https://res.cloudinary.com/dl22iuo55/image/upload/v1744030398/jy3u6b7thbwnfgt2n6jm.webp'
   createdAt:
     type: string
     format: date-time
+    description: When this contact was created
     example: '2025-04-06T10:53:45.112Z'
   updatedAt:
     type: string
     format: date-time
+    description: When this contact was last updated
     example: '2025-04-06T10:53:45.112Z'
 required:
   - _id
   - name
-  - email
   - phoneNumber
   - isFavourite
   - contactType

@@ -11,7 +11,21 @@ post:
       content:
         application/json:
           schema:
-            $ref: ../../components/responses/200.yaml
+            type: object
+            properties:
+              status:
+                type: integer
+                example: 200
+              message:
+                type: string
+                example: 'Successfully refreshed token!'
+              data:
+                type: object
+                properties:
+                  accessToken:
+                    type: string
+                    description: New JWT access token
+                    example: 'n1IiOgOQDeYgt0GHLY/8yJu3Bin3WZHcVT+J+jFB'
       headers:
         Set-Cookie:
           schema:
@@ -22,4 +36,11 @@ post:
       content:
         application/json:
           schema:
-            $ref: ../../components/responses/401.yaml
+            type: object
+            properties:
+              status:
+                type: integer
+                example: 401
+              message:
+                type: string
+                example: 'Invalid or expired refresh token'

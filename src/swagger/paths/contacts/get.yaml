@@ -48,10 +48,17 @@ responses:
     content:
       application/json:
         schema:
-          $ref: ../../components/responses/200.yaml
+          $ref: ../../components/schemas/Contact.yaml
   '401':
     description: Unauthorized
     content:
       application/json:
         schema:
-          $ref: ../../components/responses/401.yaml
+          type: object
+          properties:
+            status:
+              type: integer
+              example: 401
+            message:
+              type: string
+              example: 'Unauthorized'

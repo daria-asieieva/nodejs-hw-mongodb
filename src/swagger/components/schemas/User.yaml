@@ -1,17 +1,45 @@
 type: object
 properties:
+  _id:
+    type: string
+    description: The unique identifier of the user
+    example: '67f39f29e3c363521e0ae31d'
   name:
     type: string
+    description: User's full name
     example: 'John Doe'
   email:
     type: string
     format: email
+    description: User's email address
     example: 'john.doe@example.com'
   password:
     type: string
     format: password
+    description: User's password (not returned in responses)
     example: 'password123'
+  refreshToken:
+    type: string
+    description: JWT refresh token for the user
+    example: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...'
+  resetToken:
+    type: string
+    description: Password reset token
+    example: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...'
+  createdAt:
+    type: string
+    format: date-time
+    description: When this user was created
+    example: '2025-04-06T10:53:45.112Z'
+  updatedAt:
+    type: string
+    format: date-time
+    description: When this user was last updated
+    example: '2025-04-06T10:53:45.112Z'
 required:
+  - _id
   - name
   - email
   - password
+  - createdAt
+  - updatedAt
