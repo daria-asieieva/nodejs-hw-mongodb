@@ -49,7 +49,6 @@ required:
   - _id
   - name
   - phoneNumber
-  - isFavourite
   - contactType
   - userId
   - createdAt
