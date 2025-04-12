@@ -1130,7 +1130,6 @@
           "_id",
           "name",
           "phoneNumber",
-          "isFavourite",
           "contactType",
           "userId",
           "createdAt",
@@ -1161,16 +1160,6 @@
             "format": "password",
             "description": "User's password (not returned in responses)",
             "example": "password123"
-          },
-          "refreshToken": {
-            "type": "string",
-            "description": "JWT refresh token for the user",
-            "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
-          },
-          "resetToken": {
-            "type": "string",
-            "description": "Password reset token",
-            "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
           },
           "createdAt": {
             "type": "string",
